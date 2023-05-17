@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Sona Template">
+  <meta name="keywords" content="Sona, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ketaba</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/elegant-icons.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/css/flaticon.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/nice-select.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/nice-select.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/jquery-ui.min.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/magnific-popup.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/slicknav.min.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/style.css}"  type="text/css">
+
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+<header th:insert="blocks/header :: header"></header>
+
+<!-- Offcanvas Menu Section End -->
+
+<!-- Header Section Begin -->
+
+<!-- Header End -->
+
+<!-- Contact Section Begin -->
+<section class="contact-section spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="contact-text">
+          <h2>Contact Info</h2>
+          <p>Ketaba is the perfect hotel booking website for those looking to explore the breathtaking beauty of Kyrgyzstan. With a focus on the seven regions of the country, Ketaba offers a comprehensive selection of hotels that cater to all budgets and preferences. Whether you're looking for a luxury resort or a budget-friendly guesthouse, Ketaba has you covered.
+
+            One of the best features of Ketaba is its user-friendly interface, which makes it easy to browse and compare different hotels. The website also provides detailed information about each property, including photos, amenities, and reviews from previous guests. This helps you make an informed decision about where to stay.
+
+            In addition to hotel bookings, Ketaba also offers a range of travel services to help you plan your trip to Kyrgyzstan. From airport transfers to guided tours and activities, Ketaba can help you create the perfect itinerary for your stay.
+
+            Overall, Ketaba is the go-to website for anyone planning a trip to Kyrgyzstan. With its extensive selection of hotels and user-friendly interface, it's never been easier to book the perfect accommodation for your next adventure.</p>
+          <table>
+            <tbody>
+            <tr>
+              <td class="c-o">Address:</td>
+              <td>Timiryazeva 74, Bishkek, Kyrgyzstan</td>
+            </tr>
+            <tr>
+              <td class="c-o">Phone:</td>
+              <td>(+996)-559-00-97-41</td>
+            </tr>
+            <tr>
+              <td class="c-o">Email:</td>
+              <td>ketaba.kg@gmail.com</td>
+            </tr>
+            <tr>
+              <td class="c-o">Fax:</td>
+              <td>(+996)-559-00-97-41</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-7 offset-lg-1">
+        <form action="#" class="contact-form">
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="text" placeholder="Your Name">
+            </div>
+            <div class="col-lg-6">
+              <input type="text" placeholder="Your Email">
+            </div>
+            <div class="col-lg-12">
+              <textarea placeholder="Your Message"></textarea>
+              <button type="submit">Submit Now</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+      <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1701.317938022986!2d74.57759717217051!3d42.874578240862704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec83d0ada2d09%3A0x89c7953fdea86736!2sSidikova%2C%20Bishkek!5e0!3m2!1sen!2skg!4v1682839939405!5m2!1sen!2skg" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+<!-- Contact Section End -->
+
+<!-- Footer Section Begin -->
+
+<!-- Footer Section End -->
+<footer th:insert="blocks/footer :: footer"></footer>
+<!-- Search model Begin -->
+<div class="search-model">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="search-close-switch"><i class="icon_close"></i></div>
+    <form class="search-model-form">
+      <input type="text" id="search-input" placeholder="Search here.....">
+    </form>
+  </div>
+</div>
+<!-- Search model end -->
+
+<!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
+

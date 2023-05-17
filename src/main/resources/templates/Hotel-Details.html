@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Sona Template">
+  <meta name="keywords" content="Sona, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ketaba</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/elegant-icons.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/css/flaticon.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/nice-select.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/nice-select.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/jquery-ui.min.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/magnific-popup.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/slicknav.min.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/style.css}"  type="text/css">
+
+</head>
+
+<body>
+<!-- Page Preloder -->
+
+
+<header th:insert="blocks/header :: header"></header>
+<!-- Header End -->
+
+
+
+
+<!-- Header End -->
+
+<!-- Breadcrumb Section Begin -->
+<div  th:each="el :${hotel}" class="breadcrumb-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb-text">
+          <h2 th:text="${el.title}"></h2>
+          <div class="bt-option">
+            <a href="./home.html">Home</a>
+            <span>Rooms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumb Section End -->
+
+<!-- Room Details Section Begin -->
+<section th:each="el :${hotel}" class="room-details-section spad">
+  <div class="bd-pic">
+    <div class="bp-item">
+      <img th:src="${el.photo}" alt="">
+    </div>
+    <div class="bp-item">
+      <img th:src="${el.photo}" alt="">
+    </div>
+    <div class="bp-item">
+      <img th:src="${el.photo}" alt="">
+    </div>
+  </div>
+  <div class="bd-pic">
+    <div class="bp-item">
+      <img th:src="${el.photo}" alt="">
+    </div>
+    <div class="bp-item">
+      <img th:src="${el.photo}" alt="">
+    </div>
+    <div class="bp-item">
+      <img th:src="${el.photo}" alt="">
+    </div>
+  </div>
+  <div  class="container">
+    <div class="row">
+      <div  class="col-lg-8">
+        <div class="room-details-item">
+
+          <div class="rd-text">
+            <div class="rd-title">
+              <h3 th:text="${el.type}"></h3>
+            </div>
+            <h2 th:text="${el.price}"><span>/Pernight</span></h2>
+            <table>
+              <tbody>
+              <tr>
+                <td class="r-o">Size:</td>
+                <td th:text="${el.size}">30 ft</td>
+              </tr>
+              <tr>
+                <td class="r-o">Capacity:</td>
+                <td th:text="${el.capacity}"> people</td>
+              </tr>
+              <tr>
+                <td class="r-o">Bed:</td>
+                <td th:text="${el.bed}">King Beds</td>
+              </tr>
+              <tr>
+                <td class="r-o">Services:</td>
+                <td th:text="${el.services}"></td>
+              </tr>
+              </tbody>
+            </table>
+            <p class="f-para">Motorhome or Trailer that is the question for you. Here are some of the
+              advantages and disadvantages of both, so you will be confident when purchasing an RV.
+              When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
+              wheeler? The advantages and disadvantages of both are studied so that you can make your
+              choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
+              achievement of a lifetime. It can be similar to sojourning with your residence as you
+              search the various sites of our great land, America.</p>
+            <p>The two commonly known recreational vehicle classes are the motorized and towable.
+              Towable rvs are the travel trailers and the fifth wheel. The rv travel trailer or fifth
+              wheel has the attraction of getting towed by a pickup or a car, thus giving the
+              adaptability of possessing transportation for you when you are parked at your campsite.
+            </p>
+            <table>
+              <tbody>
+              <tr>
+                <td class="r-o">Address:</td>
+                <td  th:text="${el.address}"></td>
+              </tr>
+              <tr>
+                <td class="r-o">Phone:</td>
+                <td  th:text="${el.number}"></td>
+              </tr>
+              <tr>
+                <td class="r-o">Email:</td>
+                <td  th:text="${el.email}"></td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="map">
+              <iframe th:src="${el.map}" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <a th:href="'/hotels/' + ${el.id} + '/edit'" class="btn btn-warning" colour="pink">Edit</a>
+            <form th:action="'/hotels/' + ${el.id} + '/remove'" method="post">
+              <button class="btn btn-warning" type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Footer Section Begin -->
+<footer th:insert="blocks/footer :: footer"></footer>
+<!-- Footer Section End -->
+
+<!-- Search model Begin -->
+<div class="search-model">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="search-close-switch"><i class="icon_close"></i></div>
+    <form class="search-model-form">
+      <input type="text" id="search-input" placeholder="Search here.....">
+    </form>
+  </div>
+</div>
+<!-- Search model end -->
+
+
+</body>
+
+</html>

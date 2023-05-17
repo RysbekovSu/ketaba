@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Sona Template">
+  <meta name="keywords" content="Sona, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ketaba</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/elegant-icons.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/css/flaticon.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/nice-select.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/nice-select.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/jquery-ui.min.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/magnific-popup.css}"  type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/slicknav.min.css}" type="text/css">
+  <link rel="stylesheet"  th:href="@{/css/style.css}"  type="text/css">
+
+</head>
+
+<body>
+<!-- Page Preloder -->
+
+
+<!-- Offcanvas Menu Section Begin -->
+<div class="offcanvas-menu-overlay"></div>
+<div class="canvas-open">
+  <i class="icon_menu"></i>
+</div>
+
+<!-- Offcanvas Menu Section End -->
+
+<!-- Header Section Begin -->
+<header th:insert="blocks/header :: header"></header>
+<!-- Header End -->
+
+
+
+<!-- Blog Details Hero Section Begin -->
+<div  th:each="el :${sight}" class="breadcrumb-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb-text">
+          <h2 th:text="${el.title}"></h2>
+          <h3 th:text="${el.place}"></h3>
+          <div class="bt-option">
+            <a href="./home.html">Home</a>
+            <span>Events</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Blog Details Hero End -->
+
+<!-- Blog Details Section Begin -->
+<section th:each="el :${sight}" class="blog-details-section" >
+  <div class="container">
+    <div class="row">
+      <div    class="col-lg-10 offset-lg-1">
+        <div class="blog-details-text">
+          <div class="bd-title">
+            <p th:text="${el.description1}"></p>
+          </div>
+          <div class="bd-pic2">
+            <div class="bp-item">
+              <img  th:src="${el.photo2}" alt="">
+            </div>
+            <div class="bp-item">
+              <img th:src="${el.photo3}" alt="">
+            </div>
+            <div class="bp-item">
+              <img th:src="${el.photo4}" alt="">
+            </div>
+          </div>
+          <div class="bd-more-text">
+            <div class="bm-item">
+              <h4>If you live in New York City</h4>
+              <p th:text="${el.description2}"></p>
+            </div>
+          </div>
+          <div   class="map">
+            <iframe th:src="${el.address}" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <h1></h1>
+          <a th:href="'/sights/' + ${el.id} + '/edit'" class="btn btn-warning" colour="pink">Edit</a>
+          <form th:action="'/sights/' + ${el.id} + '/remove'" method="post">
+            <button class="btn btn-warning" type="submit">Delete</button>
+          </form>        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<footer th:insert="blocks/footer :: footer"></footer>
+<!-- Search model Begin -->
+<div class="search-model">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="search-close-switch"><i class="icon_close"></i></div>
+    <form class="search-model-form">
+      <input type="text" id="search-input" placeholder="Search here.....">
+    </form>
+  </div>
+</div>
+<!-- Search model end -->
+
+<!-- Js Plugins -->
+<script th:src="@{js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}" ></script>
+<script th:src="@{js/jquery.magnific-popup.min.js}" ></script>
+<script th:src="@{js/jquery.nice-select.min.js}" ></script>
+<script th:src="@{js/jquery-ui.min.js}" ></script>
+<script th:src="@{js/jquery.slicknav.js}" ></script>
+<script th:src="@{js/owl.carousel.min.js}" ></script>
+<script th:src="@{js/main.js}" ></script>
+</body>
+
+</html>
