@@ -13,17 +13,17 @@
           <div class="col-lg-6">
             <div class="tn-right">
               <div class="top-social">
-                <a  href="https://t.me/+996559009741"><i class="fa fa-telegram"></i></a>
-                <a href="https://www.instagram.com/ketaba.kg/"><i class="fa fa-instagram"></i></a>
+                <a  href="https://t.me/+996559009741"><i class="fa-brands fa-telegram"></i></i></a>
+                <a href="https://www.instagram.com/ketaba.kg/"><i class="fa-brands fa-instagram"></i></a>
               </div>
-              <a href="#" class="bk-btn">Booking Now</a>
-
+              <a th:if="${admin}" href="/admin/hotels" class="bk-btn">Booking Now</a>
+              <a th:if="${user}" href="/hotels" class="bk-btn">Booking Now</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="menu-item">
+    <div  class="menu-item">
       <div class="container">
         <div class="row">
           <div class="col-lg-2">
@@ -37,23 +37,31 @@
           <div class="col-lg-10">
             <div class="nav-menu">
               <nav class="mainmenu">
-                <ul>
-                  <li class="active"><a href="/hotels">Rooms</a></li>
-                  <li><a href="/hotels/add">Add a hotel</a>
-                  <li><a href="/events/add">Add an event</a>
-                  <li><a href="/sights/add">Add a sights</a></li>
-                  <li><a href="/events">Events</a></li>
-                  <li><a href="/sights">Sights</a></li>
-                  <li><a href="/contacts">Contact</a></li>
+                <ul >
+                  <li ><a th:if="${admin}" href="/admin/hotels">Rooms</a></li>
+                  <li><a th:if="${admin}" href="/admin/events">Events</a></li>
+                  <li><a th:if="${admin}" href="/admin/sights">Sights</a></li>
+                  <li><a th:if="${admin}" href="/admin/hotels/add">Add a hotel</a>
+                  <li><a th:if="${admin}" href="/admin/events/add">Add an event</a>
+                  <li><a th:if="${admin}" href="/admin/sights/add">Add a sights</a></li>
+                  <li><a th:if="${admin}" href="/admin/contacts">Contact</a></li>
+
+                  <li><a th:if="${user}" href="/hotels">Rooms</a></li>
+                  <li><a th:if="${user}" href="/events">Events</a></li>
+                  <li><a th:if="${user}" href="/sights">Sights</a></li>
+                  <li><a th:if="${user}" href="/contacts">Contact</a></li>
+
+
+
+
                   <li><form th:action="@{/logout}" method="post">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                    <input type="submit" value="Sign Out"/>
+
+                   <input class="input-87" type="submit" value="Sign Out"/>
                   </form></li>
                 </ul>
               </nav>
-              <div class="nav-right search-switch">
-                <i class="icon_search"></i>
-              </div>
+
             </div>
           </div>
         </div>
@@ -61,3 +69,7 @@
     </div>
   </header>
 </div>
+<!-- HTML !-->
+
+
+
