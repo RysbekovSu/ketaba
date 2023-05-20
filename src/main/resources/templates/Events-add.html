@@ -31,8 +31,8 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
-    <h1>Добавление статьи</h1>
-    <form action="/events/add" method="post">
+    <h1>Add an Event</h1>
+    <form action="/admin/events/add" method="post">
         <input type="text" name="title" placeholder="Insert the title" class="form-control"></br>
         <textarea name="description1" placeholder="Insert the description1" class="form-control"></textarea></br>
         <textarea name="description2" placeholder="Insert the description2" class="form-control"></textarea></br>
@@ -44,8 +44,9 @@
         <input type="text" name="photo2" placeholder="Insert the photo2" class="form-control"></br>
         <input type="text" name="photo3" placeholder="Insert the photo3" class="form-control"></br>
         <input type="text" name="photo4" placeholder="Insert the photo4" class="form-control"></br>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
         <input type="text" name="address" placeholder="Insert the Link to the map location" class="form-control"></br>
-        <button type="submit" class="btn btn-success">Добавить отель</button></br>
+        <button type="submit" class="button-87">Add an Event</button></br>
     </form>
 </div>
 </div>

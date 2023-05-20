@@ -34,10 +34,16 @@
   <h1>Добавление статьи</h1>
   <div th:each="el :${hotel}" >
   <form  method="post">
-    <input type="text" th:value="${el.photo}" name="photo" placeholder="Введите photo" class="form-control"></br>
+    <input type="text" th:value="${el.photo1}" name="photo1" placeholder="Введите photo1" class="form-control"></br>
+    <input type="text" th:value="${el.photo2}" name="photo2" placeholder="Введите photo2" class="form-control"></br>
+    <input type="text" th:value="${el.photo3}" name="photo3" placeholder="Введите photo3" class="form-control"></br>
+    <input type="text" th:value="${el.photo4}" name="photo4" placeholder="Введите photo4" class="form-control"></br>
+    <input type="text" th:value="${el.photo5}" name="photo5" placeholder="Введите photo5" class="form-control"></br>
+    <input type="text" th:value="${el.photo6}" name="photo6" placeholder="Введите photo6" class="form-control"></br>
     <input type="text" th:value="${el.type}" name="type" placeholder="Введите type" class="form-control"></br>
     <input type="text" th:value="${el.region}" name="region" placeholder="Введите region" class="form-control"></br>
     <input type="text" th:value="${el.bed}" name="bed" placeholder="Введите bed" class="form-control"></br>
+    <input type="text" th:value="${el.description}" name="description" placeholder="Введите description" class="form-control"></br>
     <input type="text" th:value="${el.services}" name="services" placeholder="Введите services" class="form-control"></br>
     <input type="text" th:value="${el.title}" name="title" placeholder="Введите title" class="form-control"></br>
     <input type="text" th:value="${el.price}" name="price" placeholder="Введите price" class="form-control"></br>
@@ -47,8 +53,9 @@
     <input type="text" th:value="${el.address}" name="address" placeholder="Введите address" class="form-control"></br>
     <input type="text" th:value="${el.number}" name="number" placeholder="Введите number" class="form-control"></br>
     <input type="text" th:value="${el.map}" name="map" placeholder="Введите map" class="form-control"></br>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}">
 
-    <button type="submit" class="btn btn-success">Update</button></br>
+    <button  type="submit" class="button-87">Update</button></br>
   </form>
     </div>
   </div>

@@ -44,8 +44,8 @@
             <input type="text" th:value="${el.photo3}" name="photo3" placeholder="Введите 3" class="form-control"></br>
             <input type="text" th:value="${el.photo4}" name="photo4" placeholder="Введите photo4" class="form-control"></br>
             <input type="text" th:value="${el.place}" name="place" placeholder="Введите place" class="form-control"></br>
-
-            <button type="submit" class="btn btn-success">Update</button></br>
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+            <button type="submit" class="button-87">Update</button></br>
         </form>
     </div>
 </div>

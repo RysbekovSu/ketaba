@@ -86,7 +86,6 @@
           </div>
           <div class="bd-more-text">
             <div class="bm-item">
-              <h4>If you live in New York City</h4>
               <p th:text="${el.description2}"></p>
             </div>
           </div>
@@ -94,10 +93,11 @@
             <iframe th:src="${el.address}" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
           <h1></h1>
-          <a th:href="'/sights/' + ${el.id} + '/edit'" class="btn btn-warning" colour="pink">Edit</a>
-          <form th:action="'/sights/' + ${el.id} + '/remove'" method="post">
-            <button class="btn btn-warning" type="submit">Delete</button>
-          </form>        </div>
+          <a th:if="${admin}" th:href="'/admin/sights/' + ${el.id} + '/edit'" class="btn btn-warning" colour="pink">Edit</a>
+          <form th:action="'/admin/sights/' + ${el.id} + '/remove'" method="post">
+            <button th:if="${admin}" class="button-87" type="submit">Delete</button>
+            <input  type="hidden" name="_csrf" th:value="${_csrf.token}">
+          </form> </div>
       </div>
     </div>
   </div>

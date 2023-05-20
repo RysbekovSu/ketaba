@@ -27,12 +27,13 @@
   <link rel="stylesheet"  th:href="@{/css/slicknav.min.css}" type="text/css">
   <link rel="stylesheet"  th:href="@{/css/style.css}"  type="text/css">
 
+
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
-  <h1>Добавление статьи</h1>
-  <form action="/sights/add" method="post">
+  <h1>Add a sight</h1>
+  <form action="/admin/sights/add" method="post">
     <input type="text" name="title" placeholder="Insert the title" class="form-control"></br>
     <textarea name="description1" placeholder="Insert the description1" class="form-control"></textarea></br>
     <textarea name="description2" placeholder="Insert the description2" class="form-control"></textarea></br>
@@ -45,10 +46,14 @@
     <input type="text" name="photo3" placeholder="Insert the photo3" class="form-control"></br>
     <input type="text" name="photo4" placeholder="Insert the photo4" class="form-control"></br>
     <input type="text" name="address" placeholder="Insert the Link to the map location" class="form-control"></br>
-    <button type="submit" class="btn btn-success">Добавить отель</button></br>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+    <button class="button-87"  type="submit" class="btn btn-success">Add a sight</button></br>
   </form>
 </div>
 </div>
+
+<!-- HTML !-->
+
 
 
 

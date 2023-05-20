@@ -29,9 +29,6 @@
 
 <body>
 <!-- Page Preloder -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
 
 <!-- Offcanvas Menu Section Begin -->
 <div class="offcanvas-menu-overlay"></div>
@@ -44,7 +41,7 @@
 <!-- Header Section Begin -->
 <header th:insert="blocks/header :: header"></header>
 
-<div align="center"> <form  method="post" action="filterEv" class="fn-form">
+<div align="center" class="shit2"> <form  method="post" action="filterEv" class="fn-form">
     <input type="text" name="filter" placeholder="Search title">
     <input type="hidden" name="_csrf" th:value="${_csrf.token}">
     <button type="submit"><i class="fa fa-search"></i></button>
@@ -55,10 +52,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <h2>Blog</h2>
+                    <h2>Events</h2>
                     <div class="bt-option">
                         <a href="./home.html">Home</a>
-                        <span>Blog Grid</span>
+                        <span>Events</span>
                     </div>
                 </div>
             </div>
@@ -73,20 +70,17 @@
         <div class="row">
 
             <div th:each="el :${events}" class="col-lg-4 col-md-6">
-                <div class="blog-item set-bg" data-setbg="img/blog/blog-1.jpg">
+                <div class="blog-item set-bg" >
+                    <img th:src="${el.photo1}" alt="Blog Image">
                     <div class="bi-text">
-                        <h4 th:text="${el.title}"></h4>
-                        <a th:href="'/events/' + ${el.id}">More details</a>
+                        <a  th:if="${user}" th:href="'/events/' + ${el.id}"><h4 th:text="${el.title}"></h4></a>
+                        <a  th:if="${admin}" th:href="'/admin/events/' + ${el.id}"><h4 th:text="${el.title}"></h4></a>
                         <div th:text="${el.date}" class="b-time"><i class="icon_clock_alt"></i></div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-12">
-                <div class="load-more">
-                    <a href="#" class="primary-btn">Load More</a>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>

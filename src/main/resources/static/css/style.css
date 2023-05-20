@@ -491,6 +491,8 @@ ul, ol {
 .offcanvas-menu-wrapper {
 	display: none;
 }
+
+
 /*---------------------
   Hero
 -----------------------*/
@@ -1194,7 +1196,8 @@ ul, ol {
 	margin-right: 0;
 }
 .bd-pic2 .bp-item img {
-	min-width: 70%;
+	width: 100%;
+	height:250px;
 }
 
 
@@ -1893,17 +1896,19 @@ ul, ol {
 	margin-bottom: 24px;
 }
 .contact-text p {
+    width:1000px;
 	color: #707079;
 }
+
 .contact-text table tbody tr td {
 	font-size: 16px;
 	color: #19191a;
 	line-height: 36px;
-	font-weight: 500;
+	font-weight: 1000px;
 }
 .contact-text table tbody tr td.c-o {
 	color: #707079;
-	width: 75px;
+	width: 160px;
 }
 .contact-form input {
 	width: 100%;
@@ -2359,4 +2364,235 @@ ul, ol {
 	.blog-details-text .comment-option .single-comment-item .sc-text a {
 		margin-bottom: 10px;
 	}
+}
+.fn-form input {
+    margin-top:5px;
+    margin-bottom:5px;
+    width: 75%;
+    height: 50px;
+    border-radius: 2px;
+    background: #FFF8DC;
+    border: 1px;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #F88500;
+}
+.fn-form button {
+    width: 20%;
+    height: 50px;
+    border-radius: 2px;
+    background: #FFF8DC;
+    border: none;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #F88500;
+}
+
+
+
+.shit li {
+	list-style: none;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+}
+.shit li.active a:after {
+	opacity: 1;
+}
+.shit li:hover>a:after {
+	opacity: 1;
+}
+.shit li:hover .dropdown {
+	top: 77px;
+	opacity: 1;
+	visibility: visible;
+}
+.shit li a {
+	font-size: 40px;
+	color: #19191a;
+	margin-right: 42px;
+	margin-top: -30px;
+	font-weight: 500;
+	display: inline-block;
+	padding: 27px 0;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.shit li a:after {
+	position: absolute;
+	left: 0;
+	top: 52px;
+	width: 100%;
+	height: 2px;
+	background: transparent;
+	content: "";
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.shit li .dropdown {
+	position: absolute;
+	left: 0;
+	top: 97px;
+	width: 300px;
+	background: #fff;
+	z-index: 9;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	-webkit-box-shadow: 0px 9px 15px rgba(25, 25, 26, 0.05);
+	box-shadow: 0px 9px 15px rgba(25, 25, 26, 0.05);
+}
+.shit li .dropdown li {
+	list-style: none;
+	display: block;
+	width:250px;
+}
+.shit li .dropdown li a {
+	font-size: 16px;
+	color: #19191a;
+	width:250px;
+	display: block;
+	text-align: left;
+	padding: 8px 15px;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.shit li .dropdown li a:hover {
+	color: #;
+}
+.shit li .dropdown li a:after {
+	display: none;
+}
+.shit .canvas-open {
+	display: none;
+}
+.shit .offcanvas-menu-wrapper {
+	display: none;
+}
+.shit2 .fn-form input {
+    margin-top:30px;
+    margin-top:5px;
+    margin-bottom:5px;
+    width: 35%;
+    height: 50px;
+    border-radius: 2px;
+    background: #FFF8DC;
+    border: 1px;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #F88500;
+}
+.shit2 .fn-form button {
+    margin-top:30px;
+    width: 5%;
+    height: 50px;
+    border-radius: 2px;
+    background: #FFF8DC;
+    border: none;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #F88500;
+}
+.fa-brands{
+    color: #F88500;
+}
+.input-87 {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 500;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.input-87:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.input-87:active {
+  transform: scale(0.95);
+}
+
+
+.button-87 {
+margin: 10px;
+padding: 15px 30px;
+text-align: center;
+text-transform: uppercase;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+border-radius: 10px;
+display: block;
+border: 0px;
+font-weight: 700;
+box-shadow: 0px 0px 14px -7px #f09819;
+background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+cursor: pointer;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+}
+
+.button-87:hover {
+background-position: right center;
+/* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+.button-87:active {
+transform: scale(0.95);
+}
+a.button-87 {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: inline-block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+a.button-87:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+a.button-87:active {
+  transform: scale(0.95);
 }

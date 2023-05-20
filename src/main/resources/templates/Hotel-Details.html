@@ -61,24 +61,24 @@
 <section th:each="el :${hotel}" class="room-details-section spad">
   <div class="bd-pic">
     <div class="bp-item">
-      <img th:src="${el.photo}" alt="">
+      <img th:src="${el.photo1}" alt="">
     </div>
     <div class="bp-item">
-      <img th:src="${el.photo}" alt="">
+      <img th:src="${el.photo2}" alt="">
     </div>
     <div class="bp-item">
-      <img th:src="${el.photo}" alt="">
+      <img th:src="${el.photo3}" alt="">
     </div>
   </div>
   <div class="bd-pic">
     <div class="bp-item">
-      <img th:src="${el.photo}" alt="">
+      <img th:src="${el.photo4}" alt="">
     </div>
     <div class="bp-item">
-      <img th:src="${el.photo}" alt="">
+      <img th:src="${el.photo5}" alt="">
     </div>
     <div class="bp-item">
-      <img th:src="${el.photo}" alt="">
+      <img th:src="${el.photo6}" alt="">
     </div>
   </div>
   <div  class="container">
@@ -90,12 +90,12 @@
             <div class="rd-title">
               <h3 th:text="${el.type}"></h3>
             </div>
-            <h2 th:text="${el.price}"><span>/Pernight</span></h2>
+            <h3 th:text="${el.price}"><span>/Pernight</span></h3>
             <table>
               <tbody>
               <tr>
                 <td class="r-o">Size:</td>
-                <td th:text="${el.size}">30 ft</td>
+                <td th:text="${el.size}">m^2</td>
               </tr>
               <tr>
                 <td class="r-o">Capacity:</td>
@@ -111,17 +111,7 @@
               </tr>
               </tbody>
             </table>
-            <p class="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-              advantages and disadvantages of both, so you will be confident when purchasing an RV.
-              When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-              wheeler? The advantages and disadvantages of both are studied so that you can make your
-              choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-              achievement of a lifetime. It can be similar to sojourning with your residence as you
-              search the various sites of our great land, America.</p>
-            <p>The two commonly known recreational vehicle classes are the motorized and towable.
-              Towable rvs are the travel trailers and the fifth wheel. The rv travel trailer or fifth
-              wheel has the attraction of getting towed by a pickup or a car, thus giving the
-              adaptability of possessing transportation for you when you are parked at your campsite.
+            <p th:text="${el.description}" class="f-para" >
             </p>
             <table>
               <tbody>
@@ -143,9 +133,10 @@
               <iframe th:src="${el.map}" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <a th:href="'/hotels/' + ${el.id} + '/edit'" class="btn btn-warning" colour="pink">Edit</a>
-            <form th:action="'/hotels/' + ${el.id} + '/remove'" method="post">
-              <button class="btn btn-warning" type="submit">Delete</button>
+            <a  th:if="${admin}" th:href="'/admin/hotels/' + ${el.id} + '/edit'" class="button-87" colour="pink">Edit</a>
+            <form th:action="'/admin/hotels/' + ${el.id} + '/remove'" method="post">
+              <input  type="hidden" name="_csrf" th:value="${_csrf.token}">
+              <button th:if="${admin}" class="button-87" type="submit">Delete</button>
             </form>
           </div>
         </div>

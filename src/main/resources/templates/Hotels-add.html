@@ -31,23 +31,30 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
-  <h1>Добавление статьи</h1>
-  <form action="/hotels/add" method="post">
-    <input type="text" name="photo" placeholder="Введите photo" class="form-control"></br>
+  <h1>Adding a room</h1>
+  <form action="/admin/hotels/add" method="post">
+    <input type="text" name="photo1" placeholder="Введите photo1" class="form-control"></br>
+    <input type="text" name="photo2" placeholder="Введите photo2" class="form-control"></br>
+    <input type="text" name="photo3" placeholder="Введите photo3" class="form-control"></br>
+    <input type="text" name="photo4" placeholder="Введите photo4" class="form-control"></br>
+    <input type="text" name="photo5" placeholder="Введите photo5" class="form-control"></br>
+    <input type="text" name="photo6" placeholder="Введите photo6" class="form-control"></br>
+    <input type="text" name="title" placeholder="Введите title" class="form-control"></br>
     <input type="text" name="type" placeholder="Введите type" class="form-control"></br>
     <input type="text" name="region" placeholder="Введите region" class="form-control"></br>
     <input type="text" name="bed" placeholder="Введите bed" class="form-control"></br>
+    <input type="text" name="description" placeholder="Введите description" class="form-control"></br>
     <input type="text" name="services" placeholder="Введите services" class="form-control"></br>
-    <input type="text" name="title" placeholder="Введите title" class="form-control"></br>
     <input type="text" name="price" placeholder="Введите price" class="form-control"></br>
     <input type="number" name="size" placeholder="Введите size" class="form-control"></br>
     <input type="number" name="capacity" placeholder="Введите capacity" class="form-control"></br>
     <input type="text" name="email" placeholder="Введите email" class="form-control"></br>
     <input type="text" name="address" placeholder="Введите address" class="form-control"></br>
     <input type="text" name="number" placeholder="Введите number" class="form-control"></br>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}">
     <input type="text" name="map" placeholder="Введите map" class="form-control"></br>
 
-    <button type="submit" class="btn btn-success">Добавить отель</button></br>
+    <button type="submit" class="button-87">Adding a room</button></br>
   </form>
 </div>
 </div>

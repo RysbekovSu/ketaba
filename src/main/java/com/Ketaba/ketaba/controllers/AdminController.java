@@ -20,82 +20,83 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
-@PreAuthorize("hasAuthority('USER')")
+@PreAuthorize("hasAuthority('ADMIN')")
 
 @Controller
-public class HotelController {
+public class AdminController {
 
-//    Hotel Rooms
+    //    Hotel Rooms
     @Autowired
     private HotelRepository hotelRepository;
 
-    @GetMapping("/hotels")
-    public String hotels(Model model, Authentication authentication) {
+    @GetMapping("/admin/hotels")
+        public String hotels(Model model, Authentication authentication) {
         Iterable<Hotel> hotels = hotelRepository.findAll();
         model.addAttribute("hotels", hotels);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
         return "Hotels";
+
     }
-    @PostMapping("filter")public String filter1(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
+    @PostMapping("admin/filter")public String filter1(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
         Iterable <Hotel> hotels;    if (filter !=null && !filter.isEmpty()){
             hotels= hotelRepository.findByTitleContaining(filter);    }
         else {        hotels = hotelRepository.findAll();
         }    model.put("hotels", hotels);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.put("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.put("admin", isAdmin);
+
         return "Hotels";}
 
-    @PostMapping("filter2")public String filter2(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
+    @PostMapping("admin/filter2")public String filter2(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
         Iterable <Hotel> hotels;    if (filter !=null && !filter.isEmpty()){
             hotels= hotelRepository.findByRegionContaining(filter);    }
         else {        hotels = hotelRepository.findAll();
         }    model.put("hotels", hotels);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.put("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.put("admin", isAdmin);
         return "Hotels";}
 
-    @PostMapping("filter3")public String filter3(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
+    @PostMapping("admin/filter3")public String filter3(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
         Iterable <Hotel> hotels;    if (filter !=null && !filter.isEmpty()){
             hotels= hotelRepository.findByBedContaining(filter);    }
         else {        hotels = hotelRepository.findAll();
         }    model.put("hotels", hotels);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.put("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.put("admin", isAdmin);
         return "Hotels";}
 
 
-    @GetMapping("/hotels/add")
-    public String hotelsAdd(Model model, Authentication authentication){
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+    @GetMapping("/admin/hotels/add")
+    public String hotelsAdd(Model model,Authentication authentication)
+    {        boolean isAdmin = authentication.getAuthorities().stream()
+            .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
         return "Hotels-add";
     }
-    @PostMapping("/hotels/add")
+    @PostMapping("/admin/hotels/add")
     public String hotelsAdd2(@RequestParam String title,@RequestParam String photo1,@RequestParam String type,@RequestParam String region,@RequestParam String bed,@RequestParam String services,@RequestParam String price,@RequestParam int capacity,@RequestParam int size,@RequestParam String email,@RequestParam String number,@RequestParam String address,@RequestParam String map,@RequestParam String photo2,@RequestParam String photo3,@RequestParam String photo4,@RequestParam String photo5,@RequestParam String photo6, @RequestParam String description, Model model){
-    Hotel hotel=new Hotel(title,photo1,type,region,bed, services,price,capacity,size,email,number,address,map,photo2,photo3,photo4,photo5,photo6, description);
-    hotelRepository.save(hotel);
-    return  "redirect:/hotels";
+        Hotel hotel=new Hotel(title,photo1,type,region,bed, services,price,capacity,size,email,number,address,map,photo2,photo3,photo4,photo5,photo6, description);
+        hotelRepository.save(hotel);
+        return  "redirect:/admin/hotels";
     }
 
-    @GetMapping("/hotels/{id}")
-    public String HotelDetails(@PathVariable(value = "id") long id, Model model, Authentication authentication) {
+    @GetMapping("/admin/hotels/{id}")
+    public String HotelDetails(@PathVariable(value = "id") long id, Model model,Authentication authentication) {
         if(!hotelRepository.existsById(id)){
-            return "redirect:/hotels";
+            return "redirect:/admin/hotels";
         }
         Optional<Hotel> hotel= hotelRepository.findById(id);
         ArrayList<Hotel> res = new ArrayList<>();
         hotel.ifPresent(res::add);
         model.addAttribute("hotel",res);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
-
+            boolean isAdmin = authentication.getAuthorities().stream()
+                    .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+            model.addAttribute("admin", isAdmin);
 
         return "Hotel-Details";
     }
@@ -111,22 +112,23 @@ public class HotelController {
 
 
 
-    @GetMapping("/hotels/{id}/edit")
-    public String HotelEdit(@PathVariable(value = "id") long id, Model model, Authentication authentication) {
+    @GetMapping("/admin/hotels/{id}/edit")
+    public String HotelEdit(@PathVariable(value = "id") long id, Model model,Authentication authentication) {
         if(!hotelRepository.existsById(id)){
-            return "redirect:/hotels";
+            return "redirect:/admin/hotels";
         }
         Optional<Hotel> post= hotelRepository.findById(id);
         ArrayList<Hotel> res = new ArrayList<>();
         post.ifPresent(res::add);
         model.addAttribute("hotel",res);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Hotel-Edit";
     }
 
-    @PostMapping("/hotels/{id}/edit")
+    @PostMapping("/admin/hotels/{id}/edit")
     public String HotelRUpdate(@PathVariable(value="id") long id,@RequestParam String title,@RequestParam String photo1,@RequestParam String type,@RequestParam String region,@RequestParam String bed,@RequestParam String services,@RequestParam String price,@RequestParam int capacity,@RequestParam int size,@RequestParam String email,@RequestParam String number,@RequestParam String address,@RequestParam String map,@RequestParam String photo2,@RequestParam String photo3,@RequestParam String photo4,@RequestParam String photo5,@RequestParam String photo6,@RequestParam String description, Model model){
         Hotel hotel = hotelRepository.findById(id).orElseThrow();
         hotel.setTitle(title);
@@ -149,13 +151,13 @@ public class HotelController {
         hotel.setMap(map);
         hotel.setDescription(description);
         hotelRepository.save(hotel);
-        return "redirect:/hotels";
+        return "redirect:/admin/hotels";
     }
-    @PostMapping("/hotels/{id}/remove")
+    @PostMapping("/admin/hotels/{id}/remove")
     public String HotelRDelete(@PathVariable(value="id") long id, Model model){
         Hotel hotel = hotelRepository.findById(id).orElseThrow();
         hotelRepository.delete(hotel);
-        return "redirect:/hotels";
+        return "redirect:/admin/hotels";
     }
 
 
@@ -163,71 +165,77 @@ public class HotelController {
     //    Events
     @Autowired
     private EventRepository eventRepository;
-    @GetMapping("/events")
-    public String events(Model model, Authentication authentication) {
+    @GetMapping("/admin/events")
+    public String events(Model model,Authentication authentication) {
         Iterable<Event> events = eventRepository.findAll();
         model.addAttribute("events", events);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Events";
     }
 
-    @PostMapping("filterEv")public String filterEv(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
+    @PostMapping("admin/filterEv")public String filterEv(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
         Iterable <Event> events;    if (filter !=null && !filter.isEmpty()){
             events= eventRepository.findByPlaceContaining(filter);    }
         else {        events = eventRepository.findAll();
         }    model.put("events", events);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.put("user", isUser);
+
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.put("admin", isAdmin);
+
         return "Events";}
 
 
-    @GetMapping("/events/add")
-    public String eventsAdd(Model model, Authentication authentication){
-        boolean isUser = authentication.getAuthorities().stream()
-            .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+    @GetMapping("/admin/events/add")
+    public String eventsAdd(Model model,Authentication authentication){
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Events-add";
     }
-    @PostMapping("/events/add")
+    @PostMapping("/admin/events/add")
     public String eventsAdd2(@RequestParam String title,@RequestParam String description1,@RequestParam String description2,@RequestParam String place,@RequestParam String date,@RequestParam String photo1,@RequestParam String photo2,@RequestParam String photo3,@RequestParam String photo4,@RequestParam String address, Model model){
         Event event=new Event(title,description1,description2,place,date,photo1,photo2,photo3,photo4,address);
         eventRepository.save(event);
-        return  "redirect:/events";}
+        return  "redirect:/admin/events";}
 
-    @GetMapping("/events/{id}")
-    public String eventDetails(@PathVariable(value = "id") long id, Model model, Authentication authentication) {
+    @GetMapping("/admin/events/{id}")
+    public String eventDetails(@PathVariable(value = "id") long id, Model model,Authentication authentication) {
         if(!eventRepository.existsById(id)){
-            return "redirect:/events";
+            return "redirect:/admin/events";
         }
         Optional<Event> event= eventRepository.findById(id);
         ArrayList<Event> res = new ArrayList<>();
         event.ifPresent(res::add);
         model.addAttribute("event",res);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Event-Details";
     }
 
-    @GetMapping("/events/{id}/edit")
-    public String EventEdit(@PathVariable(value = "id") long id, Model model, Authentication authentication) {
+    @GetMapping("/admin/events/{id}/edit")
+    public String EventEdit(@PathVariable(value = "id") long id, Model model,Authentication authentication) {
         if(!eventRepository.existsById(id)){
-            return "redirect:/events";
+            return "redirect:/admin/events";
         }
         Optional<Event> event= eventRepository.findById(id);
         ArrayList<Event> res = new ArrayList<>();
         event.ifPresent(res::add);
         model.addAttribute("event",res);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Event-Edit";
     }
 
-    @PostMapping("/events/{id}/edit")
+    @PostMapping("/admin/events/{id}/edit")
     public String EventRUpdate(@PathVariable(value="id") long id,@RequestParam String title,@RequestParam String description1,@RequestParam String description2,@RequestParam String place,@RequestParam String date,@RequestParam String photo1,@RequestParam String photo2,@RequestParam String photo3,@RequestParam String photo4,@RequestParam String address, Model model){
         Event event = eventRepository.findById(id).orElseThrow();
         event.setDate(date);
@@ -241,88 +249,92 @@ public class HotelController {
         event.setPhoto4(photo4);
         event.setPlace(place);
 
-
         eventRepository.save(event);
-        return "redirect:/events";
+        return "redirect:/admin/events";
     }
-    @PostMapping("/events/{id}/remove")
+    @PostMapping("/admin/events/{id}/remove")
     public String EventRDelete(@PathVariable(value="id") long id, Model model){
         Event event = eventRepository.findById(id).orElseThrow();
         eventRepository.delete(event);
-        return "redirect:/events";
+        return "redirect:/admin/events";
     }
 
 
 
 
 
-//    Sights
+    //    Sights
     @Autowired
     private SightRepository sightRepository;
-    @GetMapping("/sights")
-    public String sights(Model model, Authentication authentication) {
+    @GetMapping("/admin/sights")
+    public String sights(Model model,  Authentication authentication) {
         Iterable<Sight> sights = sightRepository.findAll();
         model.addAttribute("sights", sights);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Sights";
     }
-    @PostMapping("filterS")public String filterS(@RequestParam String filter, Map<String, Object> model, Authentication authentication){
+    @PostMapping("admin/filterS")public String filterS(@RequestParam String filter, Map<String, Object> model,Authentication authentication){
         Iterable <Sight> sights;    if (filter !=null && !filter.isEmpty()){
             sights= sightRepository.findByPlaceContaining(filter);    }
         else {        sights = sightRepository.findAll();
         }    model.put("sights", sights);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.put("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.put("admin", isAdmin);
+
         return "Sights";}
 
-    @GetMapping("/sights/add")
-    public String sightsAdd(Model model, Authentication authentication){
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+    @GetMapping("/admin/sights/add")
+    public String sightsAdd(Model model,Authentication authentication){
+
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
         return "Sights-add";
     }
-    @PostMapping("/sights/add")
+    @PostMapping("/admin/sights/add")
     public String sightsAdd2(@RequestParam String title,@RequestParam String description1,@RequestParam String description2,@RequestParam String place,@RequestParam String photo1,@RequestParam String photo2,@RequestParam String photo3,@RequestParam String photo4,@RequestParam String address, Model model){
         Sight sights=new Sight(title,description1,description2,place,photo1,photo2,photo3,photo4,address);
 
         sightRepository.save(sights);
-        return  "redirect:/sights";}
+        return  "redirect:/admin/sights";}
 
-    @GetMapping("/sights/{id}")
-    public String sigthDetails(@PathVariable(value = "id") long id, Model model, Authentication authentication) {
+    @GetMapping("/admin/sights/{id}")
+    public String sigthDetails(@PathVariable(value = "id") long id, Model model,Authentication authentication) {
         if(!sightRepository.existsById(id)){
-            return "redirect:/sights";
+            return "redirect:/admin/sights";
         }
         Optional<Sight> sight= sightRepository.findById(id);
         ArrayList<Sight> res = new ArrayList<>();
         sight.ifPresent(res::add);
         model.addAttribute("sight",res);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Sight-Details";
     }
 
-    @GetMapping("/sights/{id}/edit")
-    public String SightEdit(@PathVariable(value = "id") long id, Model model, Authentication authentication) {
+    @GetMapping("/admin/sights/{id}/edit")
+    public String SightEdit(@PathVariable(value = "id") long id, Model model,Authentication authentication) {
         if(!sightRepository.existsById(id)){
-            return "redirect:/sights";
+            return "redirect:/admin/sights";
         }
         Optional<Sight> sight= sightRepository.findById(id);
         ArrayList<Sight> res = new ArrayList<>();
         sight.ifPresent(res::add);
         model.addAttribute("sight",res);
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Sight-Edit";
     }
 
-    @PostMapping("/sights/{id}/edit")
+    @PostMapping("/admin/sights/{id}/edit")
     public String sightRUpdate(@PathVariable(value="id") long id,@RequestParam String title,@RequestParam String description1,@RequestParam String description2,@RequestParam String place,@RequestParam String photo1,@RequestParam String photo2,@RequestParam String photo3,@RequestParam String photo4,@RequestParam String address, Model model){
         Sight sight = sightRepository.findById(id).orElseThrow();
         sight.setAddress(address);
@@ -336,13 +348,13 @@ public class HotelController {
         sight.setPlace(place);
 
         sightRepository.save(sight);
-        return "redirect:/sights";
+        return "redirect:/admin/sights";
     }
-    @PostMapping("/sights/{id}/remove")
+    @PostMapping("/admin/sights/{id}/remove")
     public String sightRDelete(@PathVariable(value="id") long id, Model model){
         Sight sight = sightRepository.findById(id).orElseThrow();
         sightRepository.delete(sight);
-        return "redirect:/sights";
+        return "redirect:/admin/sights";
     }
 
 
@@ -354,15 +366,16 @@ public class HotelController {
 
 
     /*Contacts*/
-    @GetMapping("/contacts")
-    public String contacts(Model model, Authentication authentication){
-        boolean isUser = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("USER"));
-        model.addAttribute("user", isUser);
+    @GetMapping("/admin/contacts")
+    public String contacts(Model model,Authentication authentication){
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ADMIN"));
+        model.addAttribute("admin", isAdmin);
+
         return "Contact";
     }
 
 
-        }
+}
 
 

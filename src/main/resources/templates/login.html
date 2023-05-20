@@ -1,10 +1,82 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Spring Security Example</title>
+  <link rel="stylesheet"  th:href="@{/css/style.css}"  type="text/css">
+  <title>Login</title>
+  <style>
+    body{
+        background:#fff;
+        color:#F88500;
+    }
+
+    .submit{
+        border: 2px solid black;
+        border-radius: 10px;
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-bottom: 20px
+    }
+
+    form input, form textarea, form select{
+        border: 2px solid black;
+        border-radius: 20px;
+        margin-bottom:20px;
+    }
+
+    form{
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .teacher{
+        margin-top:100px;
+        padding:20px;
+        font-size:30px;
+    }
+
+    aside img{
+        margin-top:80px;
+        margin-left: 70px;
+        width: 10%;
+        height:10%;
+        margin-bottom: -290px;
+    }
+    .s{
+          text-align: center;
+          float:center;
+          decoration:none;
+    }
+    button{
+         text-align: center;
+          float:center;
+          text-decoration:none;
+        color:#F88500;
+                border: 2px solid black;
+        border-radius: 10px;
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-bottom: 20px
+
+    }
+    h1{
+          text-align: center;
+    }
+</style>
 </head>
 <body>
-<h1>Login page</h1>
+<div><header>
+<!--  <aside><div class="header__logo"><img  src="img/Снимок экрана 2023-05-05 170535.png"   th:src="@{img/Снимок экрана 2023-05-05 170535.png}" height="100"></div></aside>-->
+  <h1 class="teacher" align="center">Authorization</h1>
+</header></div>
 <form th:action="@{/login}" method="post">
   <div>
     <label>User Name:
@@ -23,10 +95,15 @@
     </label>
   </div>
   <div>
-    <input type="submit" value="Sign In" />
+    <input class="input-87"  type="submit" value="Sign In" />
   </div>
 </form>
-<a href="/registration">Add new user</a>
+
+<div class="s">
+  <button>
+<a class="button-87" href="/registration">Register</a>
+  </button>
+</div>
 </body>
 </html>
 
